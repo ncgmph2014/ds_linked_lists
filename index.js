@@ -25,23 +25,47 @@ class LinkedList {
     let current;
 
     //if empty then make head
-    if (!this.head) {
-      //of if(this.head === null)
+    if (this.head === null) {
+      //of if(!this.head)
       this.head = node;
     } else {
       current = this.head;
 
       while (current.next) {
-        current.next = node;
+        current = current.next;
       }
+      current.next = node;
     }
     this.size++;
   }
+
   //Insert at Index
   insertAt(data, index) {
-    //edge cases
+    //if index is out of range
     if (index > 0 && index > this.size) {
+      return;
     }
+
+    if (index === 0) {
+      this.head = new Node(data, this.head);
+      return;
+    }
+    const node = new Node(data);
+    let current, previous;
+
+    current = this.head;
+    let count = 0;
+
+    while (count < index) {
+      previous = current; //Node before index
+      count++;
+      current = current.next; //Node after index
+    }
+
+    //so confusing!!
+    node.next = current;
+    previous.next = node;
+    this.size++;
   }
   //get at index
   //remove at index
@@ -64,5 +88,6 @@ ll.insertFirst(100);
 //this actually doesn't work for me at all
 ll.insertFirst(200);
 ll.insertFirst(300);
-
+ll.insertLast(400);
+ll.insertAt(500, 0);
 console.log(ll);
