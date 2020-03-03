@@ -10,25 +10,59 @@ console.log(n1);
 
 class LinkedList {
   constructor() {
-      this.head = null;
-      this.size = 0;
+    this.head = null;
+    this.size = 0;
+  }
+
+  //Insert first node
+  insertFirst(data) {
+    this.head = new Node(data, this.head);
+    this.size++;
+  }
+  //Insert last node
+  insertLast() {
+    let node = new Node(data);
+    let current;
+
+    //if empty then make head
+    if (!this.head) {
+      //of if(this.head === null)
+      this.head = node;
+    } else {
+      current = this.head;
+
+      while (current.next) {
+        current.next = node;
+      }
+    }
+    this.size++;
+  }
+  //Insert at Index
+  insertAt(data, index) {
+    //edge cases
+    if (index > 0 && index > this.size) {
+    }
+  }
+  //get at index
+  //remove at index
+  //clear list
+  //print list data
+  printListData() {
+    let current = this.head;
+
+    while (current) {
+      console.log(current.data);
+      current = current.next;
+    }
   }
 }
-
-//Insert first node
-insertFirst(data){
-    this.head = new Node(data, this.head);
-}
-//Insert last node
-//Insert at Index
-
-//get at index
-//remove at index
-//clear list
-//print list data
 
 const ll = new LinkedList();
 
 ll.insertFirst(100);
+
 //this actually doesn't work for me at all
-// ll.insertFirst(200);
+ll.insertFirst(200);
+ll.insertFirst(300);
+
+console.log(ll);
