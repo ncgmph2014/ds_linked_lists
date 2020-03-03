@@ -20,12 +20,12 @@ class LinkedList {
     this.size++;
   }
   //Insert last node
-  insertLast() {
+  insertLast(data) {
     let node = new Node(data);
     let current;
 
     //if empty then make head
-    if (this.head === null) {
+    if (!this.head) {
       //of if(!this.head)
       this.head = node;
     } else {
@@ -90,4 +90,5 @@ ll.insertFirst(200);
 ll.insertFirst(300);
 ll.insertLast(400);
 ll.insertAt(500, 0);
-console.log(ll);
+
+ll.printListData();
